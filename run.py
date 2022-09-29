@@ -1,6 +1,3 @@
-from distutils.log import debug
-from operator import truediv
-from readline import read_init_file
 from app import app
 
 if __name__ == '__main__':
