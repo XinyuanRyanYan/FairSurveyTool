@@ -77,6 +77,10 @@ class FairMetricsPanel{
         // this.shownMetrics = ['SPD', 'DI', 'EOD', 'AOD'];
         this.shownMetrics = ['DI'];
         this.focusMetric = '';    // the focused metric
+
+        // data
+        this.metricsData = {'DI': [{"Original": 0.85}]};
+
         // if the fairness metric is single, we directly activate
         if(this.setPosition==-1){this.activate();}
     }
@@ -175,11 +179,6 @@ class FairMetricsPanel{
             this.clickEvent(divSelector);
         });
         return divSelector;
-    }
-
-    addAccuracyDiv(){
-        let divSelector = this.containerSelector.append('div');
-        visAccuracyPanel(divSelector, this.metricsData['accuracy']);
     }
 
     // add confusion matrix div
@@ -397,4 +396,4 @@ class FairMetricsPanel{
     }
 }
 
-let fairObj = new FairMetricsPanel();
+let fairObj = new FairMetricsPanel(d3.select('#visualCompo'), 'Original', -1, '');

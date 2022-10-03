@@ -5,8 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../static/css/layout.css">
 <link rel="stylesheet" type="text/css" href="../static/css/content.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css.map">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<script ></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+</script>
 </head>
 <body>
     <div class="layout">
@@ -34,6 +45,7 @@
           <p>
             Disparate Impact compares the proportion of individuals in the unprivileged group who received a favorable prediction to the proportion of individuals in the privileged group who received a favorable prediction. The calculation involves the proportion of the unprivileged group that received the positive outcome divided by the proportion of the privileged group that received the positive outcome. The ideal value of this metric is 1.0 or 100%. As shown in the loan example, this would be (60/100)/(70/100)= 0.85 or 85%.
           </p>
+          <div id="visualCompo" class="visualComponentContainer FairMetricsPanel"></div>
           <div class="CMDiv"></div>
           <p>
             Guiding questions:
@@ -44,10 +56,12 @@
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
               <button type="submit" class="btn btn-primary me-md-2 cusBtn">Next</button>
           </div>
+          
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="../static/js/init.js"></script>
     <script src="../static/js/confusionMtxPanel.js"></script>
-    <script src="../static/js/confusionMetrics.js"></script>
+    <script src="../static/js/fairMetrics.js"></script>
   </body>
 </html>
