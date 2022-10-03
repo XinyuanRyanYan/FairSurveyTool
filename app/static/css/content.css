@@ -49,3 +49,13 @@ img{
     position: relative;
     width: 80%;
 }
+
+/* style for the fairness metrics */
+.placeHolder{
+    width: 80%;
+    height: 0px !important;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 auto !important;
+}
