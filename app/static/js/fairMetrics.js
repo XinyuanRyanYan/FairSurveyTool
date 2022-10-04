@@ -89,7 +89,7 @@ class FairMetricsPanel{
      */
     async activate(){
         this.reset();
-        this.confusionMatrixData = [[[62, 1], [22, 1]], [[24, 3],[11, 4]]];
+        this.confusionMatrixData = [[[60, 10], [10, 20]], [[50, 20],[10, 20]]];
         this.initCFScale(this.confusionMatrixData);
 
         this.containerSelector
