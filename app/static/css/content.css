@@ -20,7 +20,7 @@ h1{
 
 
 p{
-    font-size: 20px;
+    font-size: 18px;
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 350;
     letter-spacing: 0.2px;
@@ -33,6 +33,12 @@ p{
     right: 0;
     width: 100%;
 }
+
+
+.learnMaterial p{
+    font-weight: 330;
+}
+
 
 /*The 5 scale*/
 .likertScale{

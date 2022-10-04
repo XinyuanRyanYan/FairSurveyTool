@@ -25,7 +25,7 @@ def materialIntro():
 def material():
     # print(request.form)
     # return flash("you are successfuly logged in")
-    return render_template('material1.html')
+    return render_template('material2.html')
 
 @app.route('/posttestIntro', methods=['POST', 'GET'])
 def posttestIntro():
