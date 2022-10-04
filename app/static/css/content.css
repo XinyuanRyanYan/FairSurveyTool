@@ -36,12 +36,23 @@ p{
 /*The 7 scale*/
 .likertScale{
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 50px 50px;
-    row-gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 40px 40px;
+    row-gap: 1px;
     text-align: center;
     vertical-align: center;
 }
+
+.likert-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.likertBG {
+    background-color: whitesmoke;
+}
+
 
 img{
     padding-top: 30px;
