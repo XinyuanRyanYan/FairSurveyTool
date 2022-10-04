@@ -127,6 +127,9 @@ class FairMetricsPanel{
         this.shownMetrics.forEach((metricName)=>{
             this.addFairMetricDiv(metricName, fairMetricContainer);
         });
+
+        // activate
+        this.clickEvent(d3.select('.DIPanel'));
     }
 
     // init the confusion matrix div
@@ -301,7 +304,13 @@ class FairMetricsPanel{
             this.maleFormulaDiv.text(`$\\frac{\\frac{${mTP}}{${mTP}+${mFN}}+\\frac{${mFP}}{${mFP}+${mTN}}}{2}$`);
         }
         this.equalDiv.text(`$=${metricValue}$`).classed('formulaText', true);  
-        MathJax.typeset();
+        // MathJax.typeset();
+        try{
+            MathJax.typeset();
+        }catch(error){
+            console.log(error);
+        }
+        
     }
 
     // remove the formula part
@@ -344,6 +353,11 @@ class FairMetricsPanel{
             }
             // update the visualization
             visFairMetricPanel(this.containerSelector.select('.'+metricName+'Panel'), metricName, metricsData[metricName]);
+            if(this.focusMetric){     
+                let red = '#E06666';
+                this.lastClickDiv.style("border", `solid 2px ${red}`);
+                this.lastClickDiv.selectAll('.lastMetric').style('fill', red).style('stroke', red);
+            }
         });
         //hilight the focused click  
         this.metricsData = metricsData;

@@ -41,15 +41,12 @@
             Based on understanding the confusion matrix, let’s learn about Disparate Impact. Consider the example below, where the two confusion matrices 
             represent the results of an <i>ML</i> model on the men group (<b>privileged group</b>) and the women group (<b>unprivileged group</b>), respectively.
           </p>
-          <img src="../static/figs/fairness_men_women.png">
+          <img src="../static/figs/cf.png">
           <p>
             <b>Disparate Impact</b> compares the proportion of individuals in the unprivileged group who received a favorable prediction to the proportion of individuals in the privileged group who received a favorable prediction. The calculation involves the proportion of the unprivileged group that received the positive outcome divided by the proportion of the privileged group that received the positive outcome. The ideal value of this metric is $1.0$ or $100\%$. As shown in the loan example, this would be $(60/100)/(70/100)= 0.85$ or $85\%$.
           </p>
-          <div id="visualCompo" class="visualComponentContainer FairMetricsPanel"></div>
-          <div class="CMDiv"></div>
-          <p style="color: grey">
+          <p style="color: #4372C4">
             <b>Please think about the following questions</b>:
-            <li>Please try to interact with the visualization and think about the following questions.</li>
             <li>What will happen when reducing the number of False Negatives in either the privileged group or the unprivileged group?</li>
             <li>What will happen to increase the number of True Positives in the privileged group?</li>
           </p>
@@ -61,8 +58,5 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <script src="../static/js/init.js"></script>
-    <script src="../static/js/confusionMtxPanel.js"></script>
-    <script src="../static/js/fairMetrics.js"></script>
   </body>
 </html>

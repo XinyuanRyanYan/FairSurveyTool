@@ -76,6 +76,9 @@ img{
     padding-bottom: 20px;
     position: relative;
     width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* style for the fairness metrics */
@@ -201,6 +204,6 @@ img{
 }
 
 
-/* .CF input[type=number]::-webkit-inner-spin-button {
+.CF input[type=number]::-webkit-inner-spin-button {
     opacity: 1
-}  */
+} 

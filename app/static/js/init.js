@@ -186,7 +186,7 @@ function visFairMetricPanel(divSelector, metricName, metricData){
         .attr('font-size', 10)
         .attr('dy', '1em')
         .attr('text-anchor', 'start')
-        .text('Bias against woman')
+        .text('Bias against female')
         .attr('fill', fontColor);
 }
 

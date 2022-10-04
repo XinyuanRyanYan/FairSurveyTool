@@ -41,15 +41,14 @@
             Based on understanding the confusion matrix, let’s learn about Disparate Impact. Consider the example below, where the two confusion matrices 
             represent the results of an <i>ML</i> model on the men group (<b>privileged group</b>) and the women group (<b>unprivileged group</b>), respectively.
           </p>
-          <img src="../static/figs/fairness_men_women.png">
-          <p>
-            <b>Disparate Impact</b> compares the proportion of individuals in the unprivileged group who received a favorable prediction to the proportion of individuals in the privileged group who received a favorable prediction. The calculation involves the proportion of the unprivileged group that received the positive outcome divided by the proportion of the privileged group that received the positive outcome. The ideal value of this metric is $1.0$ or $100\%$. As shown in the loan example, this would be $(60/100)/(70/100)= 0.85$ or $85\%$.
-          </p>
           <div id="visualCompo" class="visualComponentContainer FairMetricsPanel"></div>
           <div class="CMDiv"></div>
-          <p style="color: grey">
+
+          <p><b>Disparate Impact</b> compares the proportion of individuals in the unprivileged group who received a favorable prediction to the proportion of individuals in the privileged group who received a favorable prediction. The calculation involves the proportion of the unprivileged group that received the positive outcome divided by the proportion of the privileged group that received the positive outcome. 
+            The ideal value of this metric is $1.0$ or $100\%$. As shown in the loan example, this would be $(60/100)/(70/100)= 0.85$ or $85\%$. You can increase or decease the number in the confusion matrices above by clicking on the symbol to have a look at how Disparate Impact changes.
+          </p>
+          <p style="color: #4372C4">
             <b>Please think about the following questions</b>:
-            <li>Please try to interact with the visualization and think about the following questions.</li>
             <li>What will happen when reducing the number of False Negatives in either the privileged group or the unprivileged group?</li>
             <li>What will happen to increase the number of True Positives in the privileged group?</li>
           </p>
