@@ -5,87 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../static/css/layout.css">
 <link rel="stylesheet" type="text/css" href="../static/css/content.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css.map">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+</script>
 </head>
-<body>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
     <div class="layout">
         <div class="navDiv"></div>
         <div class="contentDiv">
             <h1>Background Questionnaire</h1>
-            <div class="QBox">
-                <p>What is the highest degree? If currently enrolled, please choose the highest degree received.</p>
+          <form action="pretestIntro" method="post">
+            <div class="QBox" id="degreeQ">
+                <p>What is your highest degree? If currently enrolled, please choose the highest degree received.</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="degree" value="Bachelor" id="degree1">
+                    <label class="form-check-label" for="degree1">
                       Bachelor’s degree
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="degree"  value="Master" id="degree2">
+                    <label class="form-check-label" for="degree2">
                       Master’s degree
                     </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
-                    Doctorate degree
+                  <input class="form-check-input" type="radio" name="degree" value="Doctorate" id="degree3">
+                  <label class="form-check-label" for="degree3">
+                    Doctorate's degree
                   </label>
               </div>
             </div>
 
-            <div class="QBox">
+            <div class="QBox" id="majorQ">
               <p>What’s your current major? Please pick one closest to your specific major.</p>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="major" value="Natural Science" id="major1">
+                  <label class="form-check-label" for="major1">
                     Natural Science
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="major" value="Engineering" id="major2">
+                  <label class="form-check-label" for="major2">
                     Engineering (not including Computer Science)
                   </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="major" value="Humanities and Arts" id="major3">
+                <label class="form-check-label" for="major3">
                   Humanities and Arts
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
+                <input class="form-check-input" type="radio" name="major" value="Social Sciences" id="major4">
+                <label class="form-check-label" for="major4">
                   Social Sciences
                 </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="major" value="Policy" id="major5">
+                  <label class="form-check-label" for="major5">
                     Policy
                   </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="major" value="Economics" id="major6">
+                <label class="form-check-label" for="major6">
                   Economics
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="major" value="Computer Science" id="major7">
+                <label class="form-check-label" for="major7">
                   Computer Science
                 </label>
               </div>
-          </div>
+            </div>
+          </form>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <form action="pretestIntro">
-              <button type="submit" class="btn btn-primary me-md-2 cusBtn">Next</button>
-            </form>
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['major', 'degree'])">Next</button>
           </div>
         </div>
     </div>
+    <script src="../static/js/global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

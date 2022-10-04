@@ -5,23 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../static/css/layout.css">
 <link rel="stylesheet" type="text/css" href="../static/css/content.css">
+<script src="../static/js/global.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
-<body>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
     <div class="layout">
         <div class="navDiv"></div>
         <div class="contentDiv">
-            <h1>Pre-test</h1>
-            <p>In the next 3 questions, we are interested in understanding whether you have heard about the topic of disparate fairness related to algorithms. Remember, there are no right or wrong answers. We are just interested in your thoughts. Please do not refer to the internet to search for an answer to the following questions. 
-            </p>
-
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <form action="pretest">
-                    <button type="submit" class="btn btn-primary cusBtn">Start Pre-test</button>
-                </form>
-            </div>
+            <h1 style="border: none"></h1>
+            <h1 style="border: none"></h1>
+            <h1 style="border: none">Thanks for participation! Your answers have been saved.</h1>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
+    <script src="../static/js/global.js"></script>
+  </body>
 </html>

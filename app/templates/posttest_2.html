@@ -5,7 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../static/css/layout.css">
 <link rel="stylesheet" type="text/css" href="../static/css/content.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css.map">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+</script>
 </head>
 <body>
     <div class="layout">
@@ -14,74 +27,74 @@
             <h1 style="border: none"></h1>
             <p>Suppose the following two confusion matrices are the model prediction on a loan application for the male and female groups, respectively. Suppose the male group is the privileged group. Please answer the following 2 Questions.</p>
             <img src="../static/figs/cmTest.png">
-            <div class="QBox">
+            <form action="engagement" method="post">
+            <div class="QBox" id="post-sub-femaleQ">
                 <p> What will the value of Disparate change if we move 5 items from False Negative to True Negative in the female group</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="post-sub-female" id="post-sub-female1" value="Increase">
+                    <label class="form-check-label" for="post-sub-female1">
                       Increase
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="post-sub-female" id="post-sub-female2" value="Decrease">
+                    <label class="form-check-label" for="post-sub-female2">
                       Decrease
                     </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="post-sub-female" id="post-sub-female3" value="Nochange">
+                  <label class="form-check-label" for="post-sub-female3">
                     No change
                   </label>
               </div>
             </div>
 
-            <div class="QBox">
+            <div class="QBox" id="post-sub-maleQ">
               <p>What will the value of Disparate Impact change if we move 5 items from False Negative to True Positive in the male group.</p>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="post-sub-male" id="post-sub-male1" value="Increase">
+                  <label class="form-check-label" for="post-sub-male1">
                     Increase
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="post-sub-male" id="post-sub-male2" value="Decrease">
+                  <label class="form-check-label" for="post-sub-male2">
                     Decrease
                   </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="post-sub-male" id="post-sub-male3" value="Nochange">
+                <label class="form-check-label" for="post-sub-male3">
                   No change
                 </label>
             </div>
             </div>
 
-            <div class="QBox">
+            <div class="QBox" id="post-ground-truthQ">
               <p>To calculate the Disparate Impact, we must know the ground truth (the actual outcome of data)</p>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="post-ground-truth" id="post-ground-truth1" value="Yes">
+                  <label class="form-check-label" for="post-ground-truth1">
                     Yes
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="post-ground-truth" id="post-ground-truth2" value="No">
+                  <label class="form-check-label" for="post-ground-truth2">
                     No
                   </label>
               </div>
             </div>
-
+            </form>
            
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <form action="engagement">
-              <button type="submit" class="btn btn-primary me-md-2 cusBtn">Next</button>
-            </form>
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['post-sub-female', 'post-sub-male', 'post-ground-truth'])">Next</button>
           </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
+    <script src="../static/js/global.js"></script>
+  </body>
 </html>

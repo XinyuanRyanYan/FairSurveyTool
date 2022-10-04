@@ -17,6 +17,10 @@ def pretestIntro():
 def pretest():
     return render_template('pretest.html')
 
+@app.route('/materialIntro', methods=['POST', 'GET'])
+def materialIntro():
+    return render_template('materialIntro.html')
+
 @app.route('/material', methods=['POST', 'GET'])
 def material():
     # print(request.form)
@@ -38,3 +42,11 @@ def posttest_2():
 @app.route('/engagement', methods=['POST', 'GET'])
 def engagement():
     return render_template('engage.html')
+
+@app.route('/learnStyle', methods=['POST', 'GET'])
+def learnStyle():
+    return render_template('learnStyle.html')
+
+@app.route('/endStudy', methods=['POST', 'GET'])
+def endStudy():
+    return render_template('endStudy.html')

@@ -5,86 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../static/css/layout.css">
 <link rel="stylesheet" type="text/css" href="../static/css/content.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css.map">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+</script>
 </head>
 <body>
     <div class="layout">
         <div class="navDiv"></div>
         <div class="contentDiv">
             <h1 style="border: none"></h1>
-            <div class="QBox">
+          <form action="posttest-2" method="post">
+            <div class="QBox" id="post-CalculationQ">
                 <p>Disparate Impact for measuring the fairness of a Machine Learning model (ML) is calculated based on the prediction of the ML model.                </p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="post-Calculation" id="post-Calculation1" value="Yes">
+                    <label class="form-check-label" for="post-Calculation1">
                       Yes
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="post-Calculation" id="post-Calculation2" value="No">
+                    <label class="form-check-label" for="post-Calculation2">
                       No
                     </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="post-Calculation" id="post-Calculation3" value="NoIdea">
+                  <label class="form-check-label" for="post-Calculation3">
                     I have no idea
                   </label>
               </div>
             </div>
 
-            <div class="QBox">
+            <div class="QBox" id="post-ValueQ">
               <p>For the fairness metric, Disparate Impact, which of the following values means a higher level of fairness?</p>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="post-Value" id="post-Value1" value="0.8">
+                  <label class="form-check-label" for="post-Value1">
                     0.8
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="post-Value" id="post-Value2" value="0.3">
+                  <label class="form-check-label" for="post-Value2">
                     0.3
                   </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="post-Value3" id="post-Value3" value="NoIdea">
+                <label class="form-check-label" for="post-Value3">
                   I have no idea
                 </label>
             </div>
             </div>
 
-            <div class="QBox">
+            <div class="QBox" id="post-AccuracyQ">
               <p>The higher the fairness of the ML model, the lower the accuracy.</p>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="post-Accuracy" id="post-Accuracy1" value="Yes">
+                  <label class="form-check-label" for="post-Accuracy1">
                     Yes
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="post-Accuracy" id="post-Accuracy2" value="No">
+                  <label class="form-check-label" for="post-Accuracy2">
                     No
                   </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="post-Accuracy" id="post-Accuracy3" value="NoIdea">
+                <label class="form-check-label" for="post-Accuracy3">
                   I have no idea
                 </label>
             </div>
             </div>
-
+          </form>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <form action="posttest-2">
-              <button type="submit" class="btn btn-primary me-md-2 cusBtn">Next</button>
-            </form>
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['post-Calculation', 'post-Value', 'post-Accuracy'])">Next</button>
           </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
+    <script src="../static/js/global.js"></script>
+  </body>
 </html>

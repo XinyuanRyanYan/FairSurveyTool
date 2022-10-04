@@ -10,83 +10,84 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
-<body>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
     <div class="layout">
         <div class="navDiv"></div>
         <div class="contentDiv">
             <h1 style="border: none"></h1>
-        <form action="material" method="post">
-            <div class="QBox">
+        <form action="materialIntro" method="post">
+            <div class="QBox" id="pre-CalculationQ">
                 <p>Disparate Impact for measuring the fairness of a Machine Learning model (ML) is calculated based on the prediction of the ML model.                </p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="ooo">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="pre-Calculation" id="pre-Calculation1" value="Yes">
+                    <label class="form-check-label" for="pre-Calculation1">
                       Yes
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="pre-Calculation" id="pre-Calculation2" value="No">
+                    <label class="form-check-label" for="pre-Calculation2">
                       No
                     </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="pre-Calculation" id="pre-Calculation3">
+                  <label class="form-check-label" for="pre-Calculation3" value="NoIdea">
                     I have no idea
                   </label>
               </div>
             </div>
 
-            <div class="QBox">
+            <div class="QBox" id="pre-ValueQ">
               <p>For the fairness metric, Disparate Impact, which of the following values means a higher level of fairness?</p>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="pre-Value" id="pre-Value1" value="0.8">
+                  <label class="form-check-label" for="pre-Value1">
                     0.8
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="pre-Value" id="pre-Value2" value="0.3">
+                  <label class="form-check-label" for="pre-Value2">
                     0.3
                   </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="pre-Value" id="pre-Value3" value="NoIdea">
+                <label class="form-check-label" for="pre-Value3">
                   I have no idea
                 </label>
             </div>
             </div>
 
-            <div class="QBox">
+            <div class="QBox" id="pre-AccuracyQ">
               <p>The higher the fairness of the ML model, the lower the accuracy.</p>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="pre-Accuracy" id="pre-Accuracy1" value="Yes">
+                  <label class="form-check-label" for="pre-Accuracy1">
                     Yes
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="pre-Accuracy" id="pre-Accuracy2" value="No">
+                  <label class="form-check-label" for="pre-Accuracy2">
                     No
                   </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="pre-Accuracy" id="pre-Accuracy3" value="No Idea">
+                <label class="form-check-label" for="pre-Accuracy3">
                   I have no idea
                 </label>
             </div>
             </div>
           </form>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <button type="submit" class="btn btn-primary me-md-2 cusBtn" onclick="indexBtnListener()">Next</button> 
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['pre-Calculation', 'pre-Value', 'pre-Accuracy'])">Next</button> 
           </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
+    <script src="../static/js/global.js"></script>
+  </body>
 </html>
