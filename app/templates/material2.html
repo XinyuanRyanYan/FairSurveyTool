@@ -24,7 +24,7 @@
         <div class="navDiv"></div>
         <div class="contentDiv">
           <h1>Disparate Impact</h1>
-          <p><b>Machine learning</b>(<i>ML</i>) is commonly used to make decisions in practice. For example, in a loan case, banks often decide to approve or deny a borrower with the assistance of <i>ML</i> models, with the borrower's information as the input, such as age, gender, employment, etc. However, it turned out that the ML model can be biased in a way that the model is more likely to approve the loan of male borrowers than female borrowers, even though they have a similar background. 
+          <p><b>Machine learning</b>(<i>ML</i>) is commonly used to make decisions in practice. For example, in a loan case, banks often decide to approve or deny a borrower with the assistance of <i>ML</i> models, with the borrower's information as the input of the <i>ML</i> model, such as age, gender, employment, etc. However, it turned out that the ML model can be biased in a way that the model is more likely to approve the loan of male borrowers than female borrowers, even though they have a similar background. 
             In this section, we aim to learn a popular fairness metric, called <b>Disparate Impact</b>, to mathematically measure the fairness of an <i>ML</i> model.</p>
           <p>
             Before that, we need to learn the <b>confusion matrix</b> first. The confusion matrix enables the comparison between the predictions of the <i>ML</i> model and the actual outcome (ground truth) on a data set. Confusion matrices are in the form of a $2*2$ matrix, as shown below. The rows represent the ground truth — i.e., the number of people who got approved for the loan ($p$) and the number of people who were denied ($n$). Columns represent the number of people the model predicted were approved for the loan $p’$ and how many were denied $n’$. 
@@ -43,12 +43,12 @@
           </p>
           <img src="../static/figs/cf.png">
           <p>
-            <b>Disparate Impact</b> compares the proportion of individuals in the unprivileged group who received a favorable prediction to the proportion of individuals in the privileged group who received a favorable prediction. The calculation involves the proportion of the unprivileged group that received the positive outcome divided by the proportion of the privileged group that received the positive outcome. The ideal value of this metric is $1.0$ or $100\%$. As shown in the loan example, this would be $(60/100)/(70/100)= 0.85$ or $85\%$.
+            <b>Disparate Impact</b> (<b>DI</b>) compares the proportion of individuals in the unprivileged group who received a favorable prediction to the proportion of individuals in the privileged group who received a favorable prediction. The calculation involves the proportion of the unprivileged group that received the positive outcome divided by the proportion of the privileged group that received the positive outcome. The ideal value of this metric is $1.0$ or $100\%$. As shown in the loan example, this would be $(60/100)/(70/100)= 0.85$ or $85\%$.
           </p>
           <p style="color: #4372C4">
             <b>Please think about the following questions</b>:
-            <li>What will happen when reducing the number of False Negatives in either the privileged group or the unprivileged group?</li>
-            <li>What will happen to increase the number of True Positives in the privileged group?</li>
+            <li>How will Disparate Impact change when reducing the number of False Negatives in either the privileged group or the unprivileged group?</li>
+            <li>How will Disparate Impact change when increasing the number of True Positives in the privileged group?</li>
           </p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <form action="posttestIntro">

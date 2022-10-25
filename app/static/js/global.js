@@ -38,6 +38,9 @@ function ansAllQuestion(nameLst, formDict){
         if(!(nameLst[i] in formDict)){
             return false;
         }
+        if(nameLst[i] == 'feedback'){
+            if(!formDict[nameLst[i]]){return false;}
+        }
     }
     return true;
 }   
