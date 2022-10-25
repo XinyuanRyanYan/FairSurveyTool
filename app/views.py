@@ -62,7 +62,7 @@ def material():
 def posttestIntro():
     session['materialETime'] = strftime("%Y-%m-%d %H:%M:%S", gmtime()) # time of end reading material
     saveResults()
-    return render_template('posttestIntro.html')
+    return render_template('postTestIntro.html')
 
 @app.route('/posttest-1', methods=['POST', 'GET'])
 def posttest_1():
