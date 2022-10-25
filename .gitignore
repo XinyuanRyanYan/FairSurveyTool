@@ -20,3 +20,5 @@ note.txt
 doc.txt
 fairer/flask_session/
 fairer/surveyRes/
+flask_session/
+surveyRes/
