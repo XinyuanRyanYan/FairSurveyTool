@@ -17,9 +17,8 @@ def saveResults():
     userData={}
     for key in list(session.keys()):
         userData[key] = session[key]
-    json_object = json.dumps(userData, indent=4)
-    with open("surveyRes/user"+str(id)+".txt", "w") as f:
-        f.write(json_object)
+    with open("surveyRes/user"+str(id)+".json", "w") as f:
+        json.dump(userData, f, indent=4)
 
 @app.route('/')
 def index():
@@ -31,6 +30,7 @@ def index():
     session['group'] = groupNum.index(min(groupNum))+1
     groupNum[session['group']-1] += 1
     id += 1
+    session['start_time'] = strftime("%Y-%m-%d %H:%M:%S", gmtime()) # time of starting the survey
     return render_template('index.html')
 
 @app.route('/background', methods=['POST', 'GET'])
@@ -61,7 +61,7 @@ def material():
 @app.route('/posttestIntro', methods=['POST', 'GET'])
 def posttestIntro():
     session['materialETime'] = strftime("%Y-%m-%d %H:%M:%S", gmtime()) # time of end reading material
-    saveResults()
+    # saveResults()
     return render_template('postTestIntro.html')
 
 @app.route('/posttest-1', methods=['POST', 'GET'])
@@ -89,5 +89,6 @@ def learnStyle():
 @app.route('/endStudy', methods=['POST', 'GET'])
 def endStudy():
     saveSession(request.form)   # learn style
+    session['end_time'] = strftime("%Y-%m-%d %H:%M:%S", gmtime()) # time of ending the survey
     saveResults()
     return render_template('endStudy.html')
