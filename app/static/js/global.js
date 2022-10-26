@@ -1,8 +1,9 @@
 /**
  * Process all button click event
  */
+let interactNum = 0;
 
- window.history.forward();
+window.history.forward();
 function noBack() { window.history.forward(); }
 
 // Button Listener
@@ -18,6 +19,18 @@ function btnListener(dataNameLst){
     else{
         alert('Please answer all questions!');
     }
+}
+
+function submitInteractNum(){
+    let formD = d3.select('form').append('input')
+        .attr('name', 'interactNum')
+        .attr('type', 'text')
+        .attr('value', interactNum)
+        .attr('visibility', 'hidden');
+    let form = d3.select('form').node();
+    console.log('form')
+    console.log(form)
+    form.submit();
 }
 
 

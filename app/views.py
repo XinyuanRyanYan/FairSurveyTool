@@ -3,14 +3,11 @@ from flask import Flask, render_template, request, flash, session
 from time import gmtime, strftime
 import json
 
-
 groupNum = [0, 0, 0]
 id = 0
 
 def saveSession(formData):
     for key in formData:
-        print(key)
-        print(formData[key])
         session[key] = formData[key]
 
 def saveResults():
@@ -22,11 +19,9 @@ def saveResults():
 
 @app.route('/')
 def index():
-    print(type(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
     global id
     global groupNum
     # decide which group
-    print('current group', groupNum)
     session['group'] = groupNum.index(min(groupNum))+1
     groupNum[session['group']-1] += 1
     id += 1
@@ -60,8 +55,8 @@ def material():
 
 @app.route('/posttestIntro', methods=['POST', 'GET'])
 def posttestIntro():
+    saveSession(request.form)   # pretest
     session['materialETime'] = strftime("%Y-%m-%d %H:%M:%S", gmtime()) # time of end reading material
-    # saveResults()
     return render_template('postTestIntro.html')
 
 @app.route('/posttest-1', methods=['POST', 'GET'])

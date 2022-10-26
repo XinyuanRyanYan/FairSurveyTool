@@ -82,6 +82,7 @@ let attrVs = ['Male', 'Female'];
     // if interactive, append <input> for each number in confusion matrix
     if(interactive){
         function numChange(){
+            interactNum += 1;
             // when a number change, then send the new confusion matrix to the fairness object
             let newCM = [[parseInt(divSelector.select('.TPval').node().value), parseInt(divSelector.select('.FNval').node().value)],
             [parseInt(divSelector.select('.FPval').node().value), parseInt(divSelector.select('.TNval').node().value)]];
