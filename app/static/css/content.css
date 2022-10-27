@@ -39,6 +39,9 @@ p{
     font-weight: 330;
 }
 
+.highlight{
+    color: #0C6DFD;
+}
 
 /*The 5 scale*/
 .likertScale{

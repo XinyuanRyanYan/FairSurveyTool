@@ -23,13 +23,16 @@
 <body>
     <div class="layout">
         <div class="navDiv"></div>
+        <div class="prog">
+          <div class="progContent" style="width: calc(8.333%*9);"></div>
+        </div>
         <div class="contentDiv">
             <h1 style="border: none"></h1>
             <p>Suppose the following two confusion matrices are the model prediction on a loan application for the male and female groups, respectively. Suppose the male group is the privileged group. Please answer the following 2 Questions.</p>
             <img src="../static/figs/cmTest.png">
             <form action="engagement" method="post">
             <div class="QBox" id="post-sub-femaleQ">
-                <p> What will the value of Disparate change if we move 5 items from False Negative to True Negative in the female group</p>
+                <p> What will the value of <b>Disparate Impact (DI)</b> change if we move 5 items from False Negative to True Negative in the female group.</p>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="post-sub-female" id="post-sub-female1" value="Increase">
                     <label class="form-check-label" for="post-sub-female1">
@@ -51,7 +54,7 @@
             </div>
 
             <div class="QBox" id="post-sub-maleQ">
-              <p>What will the value of Disparate Impact change if we move 5 items from False Negative to True Positive in the male group.</p>
+              <p>What will the value of <b>Disparate Impact (DI)</b> change if we move 5 items from False Negative to True Positive in the male group.</p>
               <div class="form-check">
                   <input class="form-check-input" type="radio" name="post-sub-male" id="post-sub-male1" value="Increase">
                   <label class="form-check-label" for="post-sub-male1">
@@ -73,7 +76,7 @@
             </div>
 
             <div class="QBox" id="post-ground-truthQ">
-              <p>To calculate the Disparate Impact, we must know the ground truth (the actual outcome of data)</p>
+              <p>To calculate <b>Disparate Impact (DI)</b>, we must know the ground truth (the actual outcome of data).</p>
               <div class="form-check">
                   <input class="form-check-input" type="radio" name="post-ground-truth" id="post-ground-truth1" value="Yes">
                   <label class="form-check-label" for="post-ground-truth1">

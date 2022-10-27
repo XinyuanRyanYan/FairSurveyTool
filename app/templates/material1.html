@@ -22,6 +22,9 @@
 <body>
     <div class="layout learnMaterial">
         <div class="navDiv"></div>
+        <div class="prog">
+          <div class="progContent" style="width: calc(8.333%*6);"></div>
+        </div>
         <div class="contentDiv">
           <h1>Disparate Impact</h1>
           <p><b>Machine learning</b>(<i>ML</i>) is commonly used to make decisions in practice. For example, in a loan case, banks often decide to approve or deny a borrower with the assistance of <i>ML</i> models, with the borrower's information as the input of the <i>ML</i> model, such as age, gender, employment, etc. However, it turned out that the ML model can be biased in a way that the model is more likely to approve the loan of male borrowers than female borrowers, even though they have a similar background. 
@@ -38,8 +41,8 @@
             <li><b>True negative</b> ($TN$) = model correctly predicts loan was denied</li>
           </p>
           <p>
-            Based on understanding the confusion matrix, let’s learn about Disparate Impact. Consider the example below, where the two confusion matrices 
-            represent the results of an <i>ML</i> model on the men group (<b>privileged group</b>) and the women group (<b>unprivileged group</b>), respectively.
+            Based on understanding the confusion matrix, let’s learn about <b>Disparate Impact</b>. Consider the example below, where the two confusion matrices 
+            represent the results of an <i>ML</i> model on the male group (<b>privileged group</b>) and the female group (<b>unprivileged group</b>), respectively.
           </p>
           <img src="../static/figs/fairness_men_women.png">
           <p>
@@ -50,6 +53,7 @@
             <li>How will Disparate Impact change when reducing the number of False Negatives in either the privileged group or the unprivileged group?</li>
             <li>How will Disparate Impact change when increasing the number of True Positives in the privileged group?</li>
           </p>
+          <p style="bottom: -20px; margin-bottom: 0; color: red; font-weight: 500;">Please note that once you start post-test, you will not be allowed to access the material.</p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <form action="posttestIntro" method="post">
             </form>
