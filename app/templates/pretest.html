@@ -9,6 +9,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/89d02c748f.js" crossorigin="anonymous"></script>
 </head>
 <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
     <div class="layout">
@@ -18,7 +19,7 @@
         </div>
         <div class="contentDiv">
             <h1 style="border: none"></h1>
-        <form action="materialIntro" method="post">
+        <form class="ansForm" action="materialIntro" method="post">
             <div class="QBox" id="pre-CalculationQ">
                 <p>Disparate Impact for measuring the fairness of a Machine Learning model (ML) is calculated based on the prediction of the ML model.                </p>
                 <div class="form-check">
@@ -86,7 +87,9 @@
             </div>
           </form>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['pre-Calculation', 'pre-Value', 'pre-Accuracy'])">Next</button> 
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['pre-Calculation', 'pre-Value', 'pre-Accuracy'])">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button> 
           </div>
         </div>
     </div>

@@ -18,6 +18,13 @@ h1{
     margin-bottom: 30px;
 }
 
+.likerBox{
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px #DBDBDB solid;
+    margin-bottom: 0px;
+}
+
 
 p{
     font-size: 18px;
@@ -57,7 +64,7 @@ p{
 .likertScale_6{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 30px 30px;
+    grid-template-rows: 30px;
     row-gap: 1px;
     text-align: center;
     vertical-align: center;

@@ -12,6 +12,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="https://kit.fontawesome.com/89d02c748f.js" crossorigin="anonymous"></script>
 <script>
   MathJax = {
       tex: {
@@ -28,9 +29,9 @@
           </div>
         <div class="contentDiv">
             <h1></h1>
-            <form action="learnStyle" method="post">
+            <form class="ansForm" action="learnStyle" method="post">
             <div class="QBox" id="effectiveQ">
-              <p>How effective was the material shown to you in illustrating the concept? Please scale it from 1-5.</p>
+              <p>How effective was the material shown to you in illustrating the concept?</p>
               <div class="likertScale">
                   <div class="likert-item">Not at all effective</div>
                   <div class="likert-item">Not effective</div>
@@ -56,7 +57,7 @@
             </div>
 
             <div class="QBox" id="engagementQ">
-              <p>How engaging did you find the information shown? Please scale it from 1-5.</p>
+              <p>How engaging did you find the information shown?</p>
               <div class="likertScale">
                   <div class="likert-item">Not at all engaging</div>
                   <div class="likert-item">Not engaging</div>
@@ -82,7 +83,7 @@
             </div>
 
             <div class="QBox" id="recommendQ">
-              <p>Would you recommend this website to others to learn about this topic? Please scale it from 1-5.</p>
+              <p>Would you recommend this website to others to learn about this topic?</p>
               <div class="likertScale">
                   <div class="likert-item">Not at all recommend</div>
                   <div class="likert-item">Not recommend</div>
@@ -117,10 +118,11 @@
         </form>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['effective', 'engagement', 'recommend', 'feedback'])">Next</button>
+            <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['effective', 'engagement', 'recommend', 'feedback'])">
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
           </div>
     </div>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="../static/js/global.js"></script>

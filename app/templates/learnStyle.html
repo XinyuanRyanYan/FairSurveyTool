@@ -12,6 +12,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="https://kit.fontawesome.com/89d02c748f.js" crossorigin="anonymous"></script>
 <script>
   MathJax = {
       tex: {
@@ -28,13 +29,15 @@
         </div>
         <div class="contentDiv">
           <p style="padding-top: 50px; padding-bottom: 30px;">
-            In the end of this study, please fill out this questionnaire regarding your learn style. There are no wrong or right answers. (1, strongly agree; 2, moderately agree; 3, agree a little; 4, disagree a little; 5, moderately disagree; 6, strongly disagree)
+            In the <span class="highlight" style="font-weight: 500;"> end </span>of this study, please fill out this questionnaire regarding your learn style. There are no wrong or right answers. (1, strongly agree; 2, moderately agree; 3, agree a little; 4, disagree a little; 5, moderately disagree; 6, strongly disagree)
           </p>
-          <form action="endStudy" method="post">
+          <form class="ansForm" action="endStudy" method="post">
             <p><b>Most of the time, I …</b></p>
           </form>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22'])">Next</button>
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22'])">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
           </div>
         </div>
     </div>

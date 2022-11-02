@@ -5,11 +5,11 @@
 function addQuestion(description, id, name){
   let selector = d3.select('form')
     .append('div')
-    .classed('QBox', true)
+    .classed('likerBox', true)
     .attr('id', id);
 
   // add description
-  selector.append('p').text(description);
+  selector.append('p').text(description).style('margin-bottom', '0.3em');
 
   // add the likertdiv
   let likertSelector = selector.append('div').classed('likertScale_6', true);
@@ -22,11 +22,11 @@ function addQuestion(description, id, name){
       .classed('form-check-input', true)
       .attr('type', 'radio')
       .attr('name', name)
-      .attr('value', i+1);
+      .attr('value', i+1)
+      .style('margin-right', '6px');
   
     divSelector.append('span')
-      .text(`${i+1}`)
-      .style('padding-left', '15px');
+      .text(`${i+1}`);
   }
 }
 

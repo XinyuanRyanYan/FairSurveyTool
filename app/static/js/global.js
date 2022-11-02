@@ -9,7 +9,8 @@ function noBack() { window.history.forward(); }
 // Button Listener
 function btnListener(dataNameLst){
     // let dataNameLst = ['major', 'degree'];
-    let form = d3.select('form').node();
+    let form = d3.select('.ansForm').node();
+    console.log(d3.select('.ansForm'));
     let formDict = getData(form);
     let completeAll = ansAllQuestion(dataNameLst, formDict);
     console.log('form', formDict);
@@ -21,15 +22,14 @@ function btnListener(dataNameLst){
     }
 }
 
-function submitInteractNum(){
-    let formD = d3.select('form').append('input')
+function submitInteractNum(className = 'ansForm'){
+    console.log('className', className);
+    let formD = d3.select(`.${className}`).append('input')
         .attr('name', 'interactNum')
         .attr('type', 'text')
         .attr('value', interactNum)
-        .attr('visibility', 'hidden');
-    let form = d3.select('form').node();
-    console.log('form')
-    console.log(form)
+        .style('visibility', 'hidden');
+    let form = d3.select(`.${className}`).node();
     form.submit();
 }
 

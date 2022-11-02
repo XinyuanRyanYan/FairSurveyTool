@@ -12,6 +12,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="https://kit.fontawesome.com/89d02c748f.js" crossorigin="anonymous"></script>
 <script>
   MathJax = {
       tex: {
@@ -27,10 +28,14 @@
           <div class="progContent" style="width: calc(8.333%*9);"></div>
         </div>
         <div class="contentDiv">
-            <h1 style="border: none"></h1>
+            <h1 style="border: none;"></h1>
+            <form class="ansForm" action="engagement" method="post">
+            <span style="color: red; font-weight: 500;">Note</span>: When answering following questions, you are allowed to refer to the learning material by clicking <button class="btn-primary btn-sm"  formaction="revisit">here</button>.
+            <!-- <form class="revisitFormAns" action="revisit" method="post"> -->
+            <p style="border-bottom: 1px solid #8497B0; padding-top: 5px;"></p>
             <p>Suppose the following two confusion matrices are the model prediction on a loan application for the male and female groups, respectively. Suppose the male group is the privileged group. Please answer the following 2 Questions.</p>
             <img src="../static/figs/cmTest.png">
-            <form action="engagement" method="post">
+            <form class="ansForm" action="engagement" method="post">
             <div class="QBox" id="post-sub-femaleQ">
                 <p> What will the value of <b>Disparate Impact (DI)</b> change if we move 5 items from False Negative to True Negative in the female group.</p>
                 <div class="form-check">
@@ -91,12 +96,15 @@
               </div>
             </div>
             </form>
-           
+          <!-- </form> -->
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['post-sub-female', 'post-sub-male', 'post-ground-truth'])">Next</button>
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['post-sub-female', 'post-sub-male', 'post-ground-truth'])">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
           </div>
         </div>
     </div>
+    <script src="../static/js/handlePost2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="../static/js/global.js"></script>
   </body>

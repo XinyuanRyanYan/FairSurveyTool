@@ -12,6 +12,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="https://kit.fontawesome.com/89d02c748f.js" crossorigin="anonymous"></script>
 <script>
   MathJax = {
       tex: {
@@ -28,7 +29,7 @@
         </div>
         <div class="contentDiv">
             <h1>Background Questionnaire</h1>
-          <form action="pretestIntro" method="post">
+          <form class="ansForm" action="pretestIntro" method="post">
             <div class="QBox" id="degreeQ">
                 <p>What is your highest degree? If currently enrolled, please choose the highest degree received.</p>
                 <div class="form-check">
@@ -98,7 +99,9 @@
             </div>
           </form>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['major', 'degree'])">Next</button>
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['major', 'degree'])">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
           </div>
         </div>
     </div>

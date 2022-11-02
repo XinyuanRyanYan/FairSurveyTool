@@ -11,6 +11,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="https://kit.fontawesome.com/89d02c748f.js" crossorigin="anonymous"></script>
 <script>
   MathJax = {
       tex: {
@@ -26,20 +27,7 @@
           <div class="progContent" style="width: calc(8.333%*6);"></div>
         </div>
         <div class="contentDiv">
-          <h1>Disparate Impact</h1>
-          <p><b>Machine learning</b>(<i>ML</i>) is commonly used to make decisions in practice. For example, in a loan case, banks often decide to approve or deny a borrower with the assistance of <i>ML</i> models, with the borrower's information as the input of the <i>ML</i> model, such as age, gender, employment, etc. However, it turned out that the ML model can be biased in a way that the model is more likely to approve the loan of male borrowers than female borrowers, even though they have a similar background. 
-            In this section, we aim to learn a popular fairness metric, called <b>Disparate Impact</b>, to mathematically measure the fairness of an <i>ML</i> model.</p>
-          <p>
-            Before that, we need to learn the <b>confusion matrix</b> first. The confusion matrix enables the comparison between the predictions of the <i>ML</i> model and the actual outcome (ground truth) on a data set. Confusion matrices are in the form of a $2*2$ matrix, as shown below. The rows represent the ground truth — i.e., the number of people who got approved for the loan ($p$) and the number of people who were denied ($n$). Columns represent the number of people the model predicted were approved for the loan $p’$ and how many were denied $n’$. 
-            Each of the $4$ cells represents the number of times predictions matched or mismatched with the ground truth.
-          </p>
-          <img src="../static/figs/confusionMatrix.png">
-          <p>
-            <li><b>True positive</b> ($TP$) = model correctly predicts loan was approved</li>
-            <li><b>False negative</b> ($FN$) = model says deny loan, but the loan was actually approved</li>
-            <li><b>False positive</b> ($FP$) = model predicts approval the loan, but the loan was actually denied</li>
-            <li><b>True negative</b> ($TN$) = model correctly predicts loan was denied</li>
-          </p>
+          <p style="margin-top: 100px;"></p>
           <p>
             Based on understanding the confusion matrix, let’s learn about <b>Disparate Impact</b>. Consider the example below, where the two confusion matrices 
             represent the results of an <i>ML</i> model on the female group (<b>unprivileged group</b>) and the male group (<b>privileged group</b>), respectively.
@@ -49,10 +37,25 @@
             <b>Disparate Impact</b> (<b>DI</b>) compares the proportion of individuals in the unprivileged group who received a favorable prediction to the proportion of individuals in the privileged group who received a favorable prediction. The calculation involves the proportion of the unprivileged group that received the positive outcome divided by the proportion of the privileged group that received the positive outcome.
             As shown in the above image, the ideal value of this metric is $1.0$ or $100\%$, and the value in this example would be $(60/100)/(70/100)= 0.85$ or $85\%$.
           </p>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <form class="ansForm" action="posttest-2" method="post">
-            </form>
-            <button class="btn btn-primary me-md-2 cusBtn" onclick="submitInteractNum()">Back to Questions</button>
+          <div class="row">
+            <div class="col" style="text-align: right; bottom: -30px;">
+              <span style="bottom: -20px; margin-bottom: 0; color: red; font-weight: 500;">Notede: You aren't allowed to go back when answering next 3 questions.</span>
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+              <form class="backAnsForm" action="materialP1" method="post">
+              </form>
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="submitInteractNum('backAnsForm')">
+                1 / 2 <i class="fa-solid fa-arrow-left-long"></i>
+              </button>
+            </div>
+            <div class="col">
+              <form class="ansForm" action="posttestIntro" method="post">
+              </form>
+              <button class="btn btn-primary me-md-2 cusBtn" onclick="submitInteractNum()" style="right: 0px; position: absolute;">
+                <i class="fa-solid fa-arrow-right-long"></i> Questions
+              </button>
+            </div>
           </div>
         </div>
     </div>
