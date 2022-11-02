@@ -61,10 +61,9 @@ class FairMetricsPanel{
      * 'EOD': , 'AOD': , 'accuracy': [{'original': 0.95}, {'mitigate': 0.2}]}
      * type: 'Original', 'Reweighing'....
      */
-    constructor(containerSelector, type, setPosition, VCSet){
+    constructor(containerSelector, type, setPosition){
         this.name = 'FairMetrics';
         this.setPosition = setPosition;
-        this.VCSet = VCSet;
         this.type = type;
         this.containerSelector = containerSelector
             .style('display', 'block')
@@ -74,12 +73,22 @@ class FairMetricsPanel{
         // data in this VC
         this.confusionMatrixData = '';
         // fairness metrics to be shown in this modular
-        // this.shownMetrics = ['SPD', 'DI', 'EOD', 'AOD'];
         this.shownMetrics = ['DI'];
         this.focusMetric = '';    // the focused metric
 
         // data
         this.metricsData = {'DI': [{"Original": 0.85}]};
+
+        // detect if this is on mobile phone
+        // this.isMobile = false;
+        // if (window.matchMedia("(max-width: 767px)").matches)
+        // {
+        //     this.isMobile = true;
+        // }
+        // the global ratio
+        this.globalRatio = document.documentElement.clientWidth<900? document.documentElement.clientWidth/1440 : 1;
+        // console.log('this.globalRatio', this.globalRatio)
+        // console.log('document.documentElement.clientWidth', document.documentElement.clientWidth);
 
         // if the fairness metric is single, we directly activate
         if(this.setPosition==-1){this.activate();}
@@ -134,12 +143,16 @@ class FairMetricsPanel{
 
     // init the confusion matrix div
     initCMDiv(){
-        let ratio = 2.9;
         let initCMDivs = (className)=>{
             return this.CMDiv.append('div').classed(className, true);
         }
         let legendDiv = initCMDivs("col-1");
-        let rowHei = parseInt(legendDiv.style('width'))*ratio;
+
+        let ratio = 2.9;    
+        let width = parseInt(legendDiv.style('width'));
+        let rowHei = width*ratio;
+        // let rowHei = width*ratio>150? width*ratio: 150; // set the minimum height as 150
+
         this.CMDiv1 = initCMDivs("col-4").append('div').style('height', `${rowHei}px`);
         initCMDivs("col-1");
         this.CMDiv0 = initCMDivs("col-4").append('div').style('height', `${rowHei}px`);
@@ -160,7 +173,8 @@ class FairMetricsPanel{
                         .classed('d-flex', true)    // center the text vertically and horizontally
                         .classed(justifyStyle, true)
                         .classed("align-items-center", true)
-                        .classed('formulaText', true);
+                        .classed('formulaText', true)
+                        .style('font-size', `${18*this.globalRatio}px`);
         }
         initFomulaDivs("col-1", "justify-content-center");
         this.feFormulaDiv = initFomulaDivs("col-4", "justify-content-center");
@@ -214,7 +228,7 @@ class FairMetricsPanel{
             if(metricName != this.lastClickDiv.property('name')){
                 this.clickEvent(this.lastClickDiv);
                 this.lastClickDiv = divSelector;
-                divSelector.style("border", `solid 2px ${red}`);
+                divSelector.style("border", `solid 1px ${red}`);
                 divSelector.selectAll('.lastMetric').style('fill', red).style('stroke', red);
             }
             else{
@@ -228,7 +242,7 @@ class FairMetricsPanel{
         }
         else{
             this.lastClickDiv = divSelector;
-            divSelector.style("border", `solid 2px ${red}`);
+            divSelector.style("border", `solid 1px ${red}`);
             divSelector.selectAll('.lastMetric').style('fill', red).style('stroke', red);
         }
         
@@ -250,7 +264,7 @@ class FairMetricsPanel{
         this.addFomula(metricName);
         this.formulaContainer
             .style("visibility", "visible")
-            .style("height", "50px");
+            .style("height", `${50*Math.sqrt(this.globalRatio)}px`);
 
         if(clear){
             this.containerSelector.selectAll('.areaBorder').remove();
@@ -264,7 +278,7 @@ class FairMetricsPanel{
             this.addFomula(metricName);
             this.formulaContainer
                 .style("visibility", "visible")
-                .style("height", "50px");
+                .style("height", `${50*Math.sqrt(this.globalRatio)}px`);
         }
 
     }
@@ -355,7 +369,7 @@ class FairMetricsPanel{
             visFairMetricPanel(this.containerSelector.select('.'+metricName+'Panel'), metricName, metricsData[metricName]);
             if(this.focusMetric){     
                 let red = '#E06666';
-                this.lastClickDiv.style("border", `solid 2px ${red}`);
+                this.lastClickDiv.style("border", `solid 1px ${red}`);
                 this.lastClickDiv.selectAll('.lastMetric').style('fill', red).style('stroke', red);
             }
         });
@@ -410,4 +424,4 @@ class FairMetricsPanel{
     }
 }
 
-let fairObj = new FairMetricsPanel(d3.select('#visualCompo'), 'Original', -1, '');
+let fairObj = new FairMetricsPanel(d3.select('#visualCompo'), 'Original', -1);

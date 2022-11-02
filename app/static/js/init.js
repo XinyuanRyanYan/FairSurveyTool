@@ -1,10 +1,11 @@
 /**The global part of the project*/
+let globalRatio = document.documentElement.clientWidth<900? document.documentElement.clientWidth/1440 : 1;
 
 // the dimension for the fairness metric panel
 let fairMetricDim = {
-  margin: {left: 90, right: 20, top: 80, bottom: 30},
-  wid: 310,
-  itemHei: 35,    // the height of each fairness metric item
+  margin: {left: 90*globalRatio, right: 20*globalRatio, top: 80*globalRatio, bottom: 30*globalRatio},
+  wid: 310*globalRatio,
+  itemHei: 35*globalRatio,    // the height of each fairness metric item
 }
 fairMetricDim.innerWid = fairMetricDim.wid - fairMetricDim.margin.left - fairMetricDim.margin.right;
 
@@ -28,8 +29,8 @@ function visFairMetricPanel(divSelector, metricName, metricData){
     divSelector.style('height', null);
     divSelector.classed('fairMetricDiv', true);    // reset the name here
     // reset the height
-    let barLen = 50;
-    let heightTemp = parseInt(divSelector.style('height'));
+    let barLen = 50*globalRatio;
+    let heightTemp = globalRatio*230;
     divSelector.style('height', `${metricData.length==1? heightTemp-barLen:heightTemp}px`);
 
     divSelector.property('name', metricName);   // the name of this div selector
@@ -38,13 +39,13 @@ function visFairMetricPanel(divSelector, metricName, metricData){
     let fairValue = fairMetricInfo[metricName].fair;
     let range = fairMetricInfo[metricName].range;
     let fontColor = '#213547';
-    let gap = 10;       // the gap between two elements
+    let gap = 10*globalRatio;       // the gap between two elements
     let baisAreaColor = '#EDEDED';          // '#FCF0F0'
 
 
     // init the div and the svg 
     // let margin_x = parseInt(divSelector.style("margin-left"));
-    let margin_y = 10;
+    let margin_y = 10*globalRatio;
     let svg_width = parseInt(divSelector.style("width"));
     let svg_height = parseInt(divSelector.style("height"));
     let innerWid = svg_width - fairMetricDim.margin.left - fairMetricDim.margin.right;
@@ -61,8 +62,8 @@ function visFairMetricPanel(divSelector, metricName, metricData){
         .range([fairMetricDim.margin.left, fairMetricDim.margin.left+innerWid]);
 
     // visualize the title
-    divSvg.append('text').attr('x', svg_width/2).attr('y', 25)
-        .attr('font-size', 15)
+    divSvg.append('text').attr('x', svg_width/2).attr('y', 25*globalRatio)
+        .attr('font-size', 15*Math.pow(globalRatio, 1/1.2))
         .attr('font-weight', 500)
         .attr('fill', fontColor)
         .attr('text-anchor', 'middle')
@@ -76,13 +77,14 @@ function visFairMetricPanel(divSelector, metricName, metricData){
         .attr('fill-opacity', '0.5');
 
     // viusualize the axis
-    let tickSize = 5;
+    let tickSize = 5*globalRatio;
     let xAxis = d3.axisBottom(XScale).ticks(5).tickSize(tickSize);
     let axisG = divSvg.append('g')
         .attr('transform', `translate(0, ${fairMetricDim.margin.top})`)
         .call(xAxis);
+    axisG.selectAll('g').style('font-size', `${10*globalRatio}px`)  // change the size of text
     axisG.selectAll('line').attr('y2', -tickSize);      // reverse the ticks
-    axisG.selectAll('text').attr('y', -15);         // change the y text
+    axisG.selectAll('text').attr('y', -15*globalRatio);         // change the y text
     axisG.select('path').remove();      // remove the previous one
     axisG.selectAll('line').attr('stroke', fontColor);
     axisG.selectAll('text').attr('fill', fontColor);
@@ -90,20 +92,19 @@ function visFairMetricPanel(divSelector, metricName, metricData){
         .attr('x1', fairMetricDim.margin.left).attr('y1', 0)
         .attr('x2', fairMetricDim.margin.left+innerWid).attr('y2', 0)
         .attr('stroke', fontColor);
-    
 
     // visualize the fair text & Line
-    divSvg.append('text').attr('x', fairMetricDim.margin.left+innerWid/2).attr('y', 50)
-        .attr('font-size', 12)
+    divSvg.append('text').attr('x', fairMetricDim.margin.left+innerWid/2).attr('y', 50*globalRatio)
+        .attr('font-size', 12*globalRatio)
         .attr('text-anchor', 'middle')
         .attr('fill', '#ED7D32')
         .attr('font-weight', 500)
         .text('Fair');
     divSvg.append('line')
-        .attr('x1', XScale(fairValue)).attr('y1', 50+5)
+        .attr('x1', XScale(fairValue)).attr('y1', (50+5)*globalRatio)
         .attr('x2', XScale(fairValue)).attr('y2', svg_height-fairMetricDim.margin.bottom)
-        .attr('stroke-width', 2)
-        .attr('stroke-dasharray', '3 3') 
+        .attr('stroke-width', 2*globalRatio)
+        .attr('stroke-dasharray', `${3*globalRatio} ${3*globalRatio}`) 
         .attr('stroke', '#ED7D32');
 
     // visualize each part
@@ -123,7 +124,7 @@ function visFairMetricPanel(divSelector, metricName, metricData){
                 .attr('dy', '0.5em')
                 .attr('text-anchor', 'end')
                 .text(key)
-                .attr('font-size', 12)
+                .attr('font-size', 12*globalRatio)
                 .attr('font-weight', ()=>i == metricData.length-1 ? 600 : 'none')
                 .attr('fill', curColor)
                 .attr('stroke-width', 0)
@@ -136,13 +137,12 @@ function visFairMetricPanel(divSelector, metricName, metricData){
                 .attr('stroke', 'grey')
                 .attr('stroke-width', 0.2);
                 
-
             // visualize the bars
             d3.select(this).append('line')
-                .attr('x1', XScale(d[key])).attr('y1', yCenter-barLen/2+5)
-                .attr('x2', XScale(d[key])).attr('y2', yCenter+barLen/2-5)
+                .attr('x1', XScale(d[key])).attr('y1', yCenter-barLen/2+5*globalRatio)
+                .attr('x2', XScale(d[key])).attr('y2', yCenter+barLen/2-5*globalRatio)
                 .attr('stroke', curColor)
-                .attr('stroke-width', '3px')
+                .attr('stroke-width', `${3*globalRatio}px`)
                 .classed('lastMetric',  i == metricData.length -1? true:false);
 
             // visualize the value
@@ -168,7 +168,7 @@ function visFairMetricPanel(divSelector, metricName, metricData){
                 .text(d[key])
                 .attr('fill', curColor)
                 .attr('fill-opacity', 0.6)
-                .attr('font-size', 10)
+                .attr('font-size', 10*Math.sqrt(globalRatio))
                 .attr('stroke-width', 0)
                 .classed('lastMetric',  i == metricData.length -1? true:false);
 
@@ -176,14 +176,14 @@ function visFairMetricPanel(divSelector, metricName, metricData){
     
     // visualize the bias square
     divSvg.append('rect')
-        .attr('x', XScale(range[0])).attr('y', svg_height-2*margin_y-fairMetricDim.margin.bottom + 23)
-        .attr('width', 15).attr('height', 15)
+        .attr('x', XScale(range[0])).attr('y', svg_height-2*margin_y-fairMetricDim.margin.bottom + 23*globalRatio)
+        .attr('width', 15*globalRatio).attr('height', 15*globalRatio)
         .attr('fill', baisAreaColor);
     
     // text
-    divSvg.append('text').attr('x', XScale(range[0])+20)
-        .attr('y', svg_height-2*margin_y-fairMetricDim.margin.bottom + 23)
-        .attr('font-size', 10)
+    divSvg.append('text').attr('x', XScale(range[0])+20*globalRatio)
+        .attr('y', svg_height-2*margin_y-fairMetricDim.margin.bottom + 23*globalRatio)
+        .attr('font-size', 10*globalRatio)
         .attr('dy', '1em')
         .attr('text-anchor', 'start')
         .text('Bias against female')

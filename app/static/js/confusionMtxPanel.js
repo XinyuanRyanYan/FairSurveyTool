@@ -7,7 +7,7 @@ let CMDim = {       // dimension for the confusion matrix div
 CMDim.wrapperWid = CMDim.width + CMDim.margin.left + CMDim.margin.right;
 CMDim.wrapperHei = CMDim.height + CMDim.margin.top + CMDim.margin.bottom;
 
-let outputLabel = ['Approve', 'Deny'];
+let outputLabel = ['p', 'n'];
 let attrVs = ['Male', 'Female'];
 
 /**
@@ -16,6 +16,7 @@ let attrVs = ['Male', 'Female'];
  * @param {*} idx visualize which confusion matrix we should use  either 1 or 0
  */
  function visConfusionMatrixPanel(divSelector, confusionMatrixData, idx, interactive = false, FairMetricsPanelObj){
+    let globalRatio = document.documentElement.clientWidth<900? document.documentElement.clientWidth/1440 : 1;
     // clear the existing elements
     divSelector.selectAll('*').remove();
     divSelector.classed('CF', true);
@@ -32,9 +33,9 @@ let attrVs = ['Male', 'Female'];
         div_height = divSelector_dom.clientHeight;
     }
 
-    let margin = 10;
-    let text_width = 10 + 14 + margin; // text and bigText width
-    let plotTitle_height = 10 + margin;
+    let margin = 10*globalRatio;
+    let text_width = (10 + 14)*globalRatio + margin; // text and bigText width
+    let plotTitle_height = 10*globalRatio + margin;
     let svg_width = div_width - margin;
     let svg_height = div_height - plotTitle_height;
     let divSvg = divSelector.append('svg').attr('width', svg_width).attr('height', svg_height);
@@ -66,7 +67,7 @@ let attrVs = ['Male', 'Female'];
         GSelector.append('text')
             .attr('x', x+rectWid/2)
             .attr('y', y+rectHei/2)
-            .attr('font-size', '12px')
+            .style('font-size', `${12*globalRatio}px`)
             .attr('text-anchor', 'middle')
             .attr('dy', '0.5em')
             .text(CFData[className])
@@ -89,12 +90,11 @@ let attrVs = ['Male', 'Female'];
             FairMetricsPanelObj.update(newCM, idx);
             // rerender the color of confusion matrix
             let className = d3.select(this).attr('class').substring(0, 2);
-            console.log('name', className)
             let newVal = d3.select(this).node().value;
             console.log('value', newVal)
             divSelector.select('.'+className).style('opacity', opacityScale(newVal));
         }
-
+        // IOS not support the such input https://stackoverflow.com/questions/62300321/mobile-ios-input-type-date-min-and-max-not-working-on-chrome-and-safari
         let addInputs = (x, y, className, value)=>{
             let offset = text_width + margin/2;
             divSelector.append('input')   
@@ -103,7 +103,9 @@ let attrVs = ['Male', 'Female'];
                 .attr("min", "1")
                 .attr("max", "100")
                 .attr("value", value)
+                .style('font-size', `${15*Math.sqrt(globalRatio, 2)}px`)
                 .attr("step", "5")
+                .attr("inputMode", 'numeric')
                 .on('change', numChange)
                 .style('left', function(){return `${offset + x + rectWid/2 - parseInt(d3.select(this).style('width'))/2}px`})
                 .style('top', function(){return `${offset + y + rectHei/2 - parseInt(d3.select(this).style('height'))/2}px`});
@@ -117,10 +119,10 @@ let attrVs = ['Male', 'Female'];
     // visualize the two axises
     let visText = (GSelector, x, y, text, angle)=>{
         return GSelector.append('text').attr('x', 0).attr('y', 0).text(text).attr('text-anchor', 'middle')
-            .attr('font-size', '10px') // 
+            .attr('font-size', `${10*Math.sqrt(globalRatio,2)}px`) // 
             .style('transform', `rotate(${angle}deg)  translate(${x}px, ${y}px)`);
     }
-    let gap = 5;
+    let gap = 5*globalRatio;
     visText(CFGroup, -rectHei/2, 0-gap, outputLabel[0], -90);
     visText(CFGroup, -rectHei/2*3, 0-gap, outputLabel[1], -90);
     visText(CFGroup, rectWid/2, 0-gap, outputLabel[0], 0);
@@ -128,7 +130,7 @@ let attrVs = ['Male', 'Female'];
     // visualize the title: Actual / Predicted
     let visBigText = (GSelector, x, y, text, angle)=>{
         return GSelector.append('text').attr('x', 0).attr('y', 0).text(text).attr('text-anchor', 'middle')
-            .attr('font-size', '14px')
+            .attr('font-size', `${14*Math.sqrt(globalRatio,2)}px`)
             .style('transform', `rotate(${angle}deg) translate(${x}px, ${y}px)`);
     }
     visBigText(CFGroup, rectWid, 0-gap*4, 'Predicted', 0);
@@ -136,9 +138,11 @@ let attrVs = ['Male', 'Female'];
 
     // visualize the title of the group
     let title = idx==0? attrVs[0]:attrVs[1];
-    divSelector.append('p').classed('plotTitle', true).text(`${title}`)
+    divSelector.append('span').classed('plotTitle', true).text(`${title}`)
+        .style('bottom', `${-16*Math.sqrt(globalRatio,2)}px`)
         .style("top", `${svg_height}px`)
-    .style("padding-bottom","0px").style("padding-top","0px");
+        .style("font-size", `${12*Math.sqrt(globalRatio,2)}px`)
+        .style("padding-bottom","0px").style("padding-top","0px");
 
     return divSelector;
 }
