@@ -7,7 +7,7 @@ let CMDim = {       // dimension for the confusion matrix div
 CMDim.wrapperWid = CMDim.width + CMDim.margin.left + CMDim.margin.right;
 CMDim.wrapperHei = CMDim.height + CMDim.margin.top + CMDim.margin.bottom;
 
-let outputLabel = ['p', 'n'];
+let outputLabel = ['p ', 'n', 'p\'', 'n\''];
 let attrVs = ['Male', 'Female'];
 
 /**
@@ -117,16 +117,16 @@ let attrVs = ['Male', 'Female'];
     }
 
     // visualize the two axises
-    let visText = (GSelector, x, y, text, angle)=>{
-        return GSelector.append('text').attr('x', 0).attr('y', 0).text(text).attr('text-anchor', 'middle')
+    let visText = (GSelector, x, y, text, angle, pos)=>{
+        return GSelector.append('text').attr('x', 0).attr('y', 0).text(text).attr('text-anchor', pos)
             .attr('font-size', `${10*Math.sqrt(globalRatio,2)}px`) // 
             .style('transform', `rotate(${angle}deg)  translate(${x}px, ${y}px)`);
     }
     let gap = 5*globalRatio;
-    visText(CFGroup, -rectHei/2, 0-gap, outputLabel[0], -90);
-    visText(CFGroup, -rectHei/2*3, 0-gap, outputLabel[1], -90);
-    visText(CFGroup, rectWid/2, 0-gap, outputLabel[0], 0);
-    visText(CFGroup, rectWid/2*3, 0-gap, outputLabel[1], 0);
+    visText(CFGroup, 0, gap+rectHei/2-1, outputLabel[0], 0, 'end');
+    visText(CFGroup, 0, gap+3*rectHei/2-1, outputLabel[1], 0, 'end');
+    visText(CFGroup, rectWid/2, 0-gap, outputLabel[2], 0, 'middle');
+    visText(CFGroup, rectWid/2*3, 0-gap, outputLabel[3], 0, 'middle');
     // visualize the title: Actual / Predicted
     let visBigText = (GSelector, x, y, text, angle)=>{
         return GSelector.append('text').attr('x', 0).attr('y', 0).text(text).attr('text-anchor', 'middle')

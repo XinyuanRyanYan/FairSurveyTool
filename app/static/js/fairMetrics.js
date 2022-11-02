@@ -354,7 +354,7 @@ class FairMetricsPanel{
             metricsData[metricName] = [];
             let lastVal = Object.values(this.metricsData[metricName][this.metricsData[metricName].length-1])[0];
             let currentVal = this.calcuteMetrics(metricName);
-            metricsData[metricName].push({'Previous': lastVal});
+            metricsData[metricName].push({'Last': lastVal});
             metricsData[metricName].push({'Current': currentVal});
             if(metricName == 'DI'){
                 // check the result
