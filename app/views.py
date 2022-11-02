@@ -28,8 +28,8 @@ def index():
     for key in list(session.keys()):
         session.pop(key)
     # decide which group
-    # session['group'] = groupNum.index(min(groupNum))+1
-    session['group'] = 2
+    session['group'] = groupNum.index(min(groupNum))+1
+    # session['group'] = 2
     session['readingPeriods'] = []  # the reading periods users spend in the 2 parts ['P1', time, numInteraction], ['P2', time], ['End', time, numInteraction]
     session['revisitPeriods'] = []  # the revisiting material periods; ['mtl', time], ['test', time, numInteraction], ['end', time]
     groupNum[session['group']-1] += 1
