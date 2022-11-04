@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Tool</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../static/css/layout.css">
+<link rel="stylesheet" type="text/css" href="../static/css/content.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css.map">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://kit.fontawesome.com/89d02c748f.js" crossorigin="anonymous"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+</script>
+</head>
+<body>
+    <div class="layout">
+        <div class="navDiv"></div>
+        <div class="contentDiv">
+            <h1>Consent Cover Letter</h1>
+            <p>The purpose of this research study is to understand how human process and understand different
+                form and formats of information presentation be it visual or textual. As part of the survey, you
+                will be presented with information about algorithms and how they work to provide predictions.
+                Based on the content and format of information, you will be asked to respond to questions that
+                will evaluate how well you understood the information and how you perceived the information
+                environment.</p>
+            <p>
+                The purpose of this research study is to understand how human process and understand different
+form and formats of information presentation be it visual or textual. As part of the survey, you
+will be presented with information about algorithms and how they work to provide predictions.
+Based on the content and format of information, you will be asked to respond to questions that
+will evaluate how well you understood the information and how you perceived the information
+environment.
+            </p>
+            <p>
+                All information will be kept confidential by the researcher. The researcher will not identify the
+study questionnaires or study data with your name. The data files will be on computers that are
+password protected. If a report or article is written about this study then the study results will be
+described in a summarized manner so that you cannot be identified. Any data that is published or
+made public will be anonymized so that you cannot be identified.
+            </p>
+            <p>
+                If you have any questions complaints or if you feel you have been harmed by this research please
+contact Bei Wang Phillips, University of Utah Business School, beiwang@sci.utah.edu or
+xyan@cs.utah.edu.
+            </p>
+            <p>
+                Contact the Institutional Review Board (IRB) if you have questions regarding your rights as a
+research participant. Also, contact the IRB if you have questions, complaints or concerns which
+you do not feel you can discuss with the investigator. The University of Utah IRB may be
+reached by phone at (801) 581-3655 or by e-mail at irb@hsc.utah.edu.
+            </p>
+            <p>
+                Research Participant Advocate: You may also contact the Research Participant Advocate (RPA)
+by phone at (801) 581-3803 or by email at participant.advocate@hsc.utah.edu.
+            </p>
+<p>
+    Participation in this study is voluntary. You can choose not to take part. You can choose not to
+finish the survey. We check responses carefully in order to make sure that people have read the
+instructions for the task and responded carefully. We will only accept participants who clearly
+demonstrate that they have read and understood the survey. There may be some very simple
+questions in what follows that test whether you are reading the instructions. If you get these
+questions wrong, you will not be eligible for participation.
+</p>
+<p>
+    By clicking “continue” you are giving your consent to participate.
+</p>
+<p>
+    We appreciate your participation in the study. Thank you.
+</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <form action="index">
+                <button type="submit" class="btn btn-primary me-md-2 cusBtn" id="indexBtn">
+                    Continue
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="../static/js/global.js"></script>
+    <script>
+        // test the mobile / computer
+        var isMobile = window.matchMedia("only screen and (max-width: 760px)").matches ? true : false;
+        axios.post('/ckd', {
+            isMobile:isMobile
+        })
+        .then(function (response) {
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    </script>
+</body>
+</html>

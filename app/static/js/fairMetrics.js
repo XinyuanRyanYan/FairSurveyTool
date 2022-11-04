@@ -61,7 +61,8 @@ class FairMetricsPanel{
      * 'EOD': , 'AOD': , 'accuracy': [{'original': 0.95}, {'mitigate': 0.2}]}
      * type: 'Original', 'Reweighing'....
      */
-    constructor(containerSelector, type, setPosition){
+    constructor(containerSelector, type, setPosition, interactive){
+        this.interactive = interactive;
         this.name = 'FairMetrics';
         this.setPosition = setPosition;
         this.type = type;
@@ -200,7 +201,7 @@ class FairMetricsPanel{
 
     // add confusion matrix div
     addCMDiv(divSelector, idx){
-        divSelector = visConfusionMatrixPanel(divSelector, this.confusionMatrixData, idx, true, this);
+        divSelector = visConfusionMatrixPanel(divSelector, this.confusionMatrixData, idx, this.interactive, this);
     }
     
     /**
@@ -424,4 +425,3 @@ class FairMetricsPanel{
     }
 }
 
-let fairObj = new FairMetricsPanel(d3.select('#visualCompo'), 'Original', -1);

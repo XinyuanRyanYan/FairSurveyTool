@@ -85,8 +85,15 @@ let attrVs = ['Male', 'Female'];
         function numChange(){
             interactNum += 1;
             // when a number change, then send the new confusion matrix to the fairness object
-            let newCM = [[parseInt(divSelector.select('.TPval').node().value), parseInt(divSelector.select('.FNval').node().value)],
-            [parseInt(divSelector.select('.FPval').node().value), parseInt(divSelector.select('.TNval').node().value)]];
+            let tpV = divSelector.select('.TPval').node().value;
+            let fnV = divSelector.select('.FNval').node().value;
+            let fpV = divSelector.select('.FPval').node().value;
+            let tnV = divSelector.select('.TNval').node().value;
+            if(isNaN(tpV)||isNaN(fnV)||isNaN(fpV)||isNaN(tnV)){
+                return;
+            }
+            if(parseInt(tpV)+parseInt(fpV)==0){return;}
+            let newCM = [[parseInt(tpV), parseInt(fnV)],[parseInt(fpV), parseInt(tnV)]];
             FairMetricsPanelObj.update(newCM, idx);
             // rerender the color of confusion matrix
             let className = d3.select(this).attr('class').substring(0, 2);
@@ -98,13 +105,13 @@ let attrVs = ['Male', 'Female'];
         let addInputs = (x, y, className, value)=>{
             let offset = text_width + margin/2;
             divSelector.append('input')   
-                .attr("type", "number")
+                // .attr("type", "number")
                 .classed(className, true)
-                .attr("min", "1")
-                .attr("max", "100")
+                // .attr("min", "1")
+                // .attr("max", "100")
                 .attr("value", value)
                 .style('font-size', `${15*Math.sqrt(globalRatio, 2)}px`)
-                .attr("step", "5")
+                // .attr("step", "1")
                 .attr("inputMode", 'numeric')
                 .on('change', numChange)
                 .style('left', function(){return `${offset + x + rectWid/2 - parseInt(d3.select(this).style('width'))/2}px`})

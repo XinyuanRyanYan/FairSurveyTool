@@ -22,17 +22,16 @@
 </script>
 </head>
 <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
-    <div class="layout">
+    <div class="layout" style="grid-template-columns: 0.5fr 9fr 0.5fr">
         <div class="navDiv"></div>
         <div class="prog">
           <div class="progContent" style="width: calc(8.333%*12);"></div>
         </div>
         <div class="contentDiv">
           <p style="padding-top: 50px; padding-bottom: 30px;">
-            In the <span class="highlight" style="font-weight: 500;"> end </span>of this study, please fill out this questionnaire regarding your learn style. There are no wrong or right answers. (1, strongly agree; 2, moderately agree; 3, agree a little; 4, disagree a little; 5, moderately disagree; 6, strongly disagree)
+            At the <span class="highlight" style="font-weight: 500;"> end </span>of this study, please rate the following statements on a scale of 1-6. There are no wrong or right answers. (1, strongly disagree; 2, moderately disagree; 3, disagree a little; 4, agree a little; 5, moderately agree; 6, strongly agree)
           </p>
           <form class="ansForm" action="endStudy" method="post">
-            <p><b>Most of the time, I …</b></p>
           </form>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
               <button class="btn btn-primary me-md-2 cusBtn" onclick="btnListener(['Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q16','Q17','Q18','Q19','Q20','Q21','Q22'])">

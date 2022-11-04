@@ -36,11 +36,11 @@
           <div class="CMDiv"></div>
 
           <p><b>Disparate Impact</b> (<b>DI</b>) compares the proportion of individuals in the unprivileged group who received a favorable prediction to the proportion of individuals in the privileged group who received a favorable prediction. As highlighted in the above visualization, the calculation involves the proportion of the unprivileged group that received the positive outcome divided by the proportion of the privileged group that received the positive outcome. 
-           The ideal value of this metric is $1.0$ or $100\%$, and the value in this example would be $(60/100)/(70/100)= 0.85$ or $85\%$. Please increase or decease the number in the confusion matrices above by clicking on the symbol to have a look at how Disparate Impact changes.
+           The ideal value of this metric is $1.0$ or $100\%$, and the value in this example would be $(60/100)/(70/100)= 0.85$ or $85\%$. Please modify numbers in above confusion matrices by clicking on it then press 'enter' to have a look at how Disparate Impact changes.
           </p>
           <div class="row">
             <div class="col" style="text-align: right; bottom: -40px;">
-              <span style="bottom: -20px; margin-bottom: 0; color: red; font-weight: 500;"> Note: You aren't allowed to go back when answering next 3 questions.</span>
+              <span style="bottom: -20px; margin-bottom: 0; color: red; font-weight: 500;"></span>
             </div>
             <div class="w-100"></div>
             <div class="col">
@@ -65,5 +65,8 @@
     <script src="../static/js/init.js"></script>
     <script src="../static/js/confusionMtxPanel.js"></script>
     <script src="../static/js/fairMetrics.js"></script>
+    <script>
+      let fairObj = new FairMetricsPanel(d3.select('#visualCompo'), 'Original', -1, true);
+    </script>
   </body>
 </html>

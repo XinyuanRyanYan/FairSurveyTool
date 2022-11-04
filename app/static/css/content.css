@@ -54,17 +54,20 @@ p{
 .likertScale{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 40px 40px;
+    grid-template-rows: auto 40px;
+    column-gap: 1%;
     row-gap: 1px;
     text-align: center;
     vertical-align: center;
+    /* background-color: whitesmoke; */
 }
 
 /*6*/
-.likertScale_6{
+.likertScale_7{
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 30px;
+    grid-template-columns: 2fr repeat(6, 1fr);
+    /* grid-template-rows: 30px; */
+    column-gap: 1%;
     row-gap: 1px;
     text-align: center;
     vertical-align: center;
@@ -107,7 +110,7 @@ img{
     height: 20px;
     text-align: center;
     background-color: transparent;
-    border: 0px;
+    border: 1px #A5A5A5 dashed;
     padding: 0px;
     cursor: default;
 }

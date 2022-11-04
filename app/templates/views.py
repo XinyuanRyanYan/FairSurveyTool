@@ -21,7 +21,7 @@ def getCurTime():
     return strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
 @app.route('/')
-def IRB():
+def index():
     global id
     global groupNum
     # clear session
@@ -37,10 +37,6 @@ def IRB():
     groupNum[session['group']-1] += 1
     id += 1
     session['start_time'] = getCurTime() # time of starting the survey
-    return render_template('IRB.html')
-
-@app.route('/index', methods=['POST', 'GET'])
-def index():
     return render_template('index.html')
 
 # check the device mobile (Yes) ? computer
@@ -90,31 +86,18 @@ def posttestIntro():
 
 @app.route('/posttest-1', methods=['POST', 'GET'])
 def posttest_1():
-    if 'interactNum' in request.form.keys():
-    # ['test', time, numInteraction]
-        session['revisitP1Periods'].append(['test', getCurTime(), request.form['interactNum']])
-    else:
-        session['post1STime'] = getCurTime() # post test 1 start time
+    session['post1STime'] = getCurTime() # post test 1 start time
     return render_template('posttest_1.html')
 
 # revisit the learning material during post-test1
 @app.route('/revisitP1', methods=['POST', 'GET'])
-def revisitP1():
+def revisit():
     # record revisit time
-    session['revisitP1Periods'].append(['mtl', getCurTime()])
-    print('ans collected in the revisit P1')
+    session['revisitPeriods'].append(['mtl', getCurTime()])
+    print('ans collected in the revisit')
     print(request.form)
-    saveSession(request.form)   # save post-test1
-    return render_template('materialR1_'+str(session['group'])+'.html')
-
-# fetch the ans for the posttest-1, and send them to the frontend
-@app.route('/getPost1Ans', methods=['POST', 'GET'])
-def getPost1Ans():
-    nameLst = ['post-Calculation', 'post-Value', 'post-Accuracy']
-    res = {}
-    for name in nameLst:
-        res[name] = session.get(name)
-    return jsonify(res)
+    saveSession(request.form)   # save post-test2
+    return render_template('material'+str(session['group'])+'.html')
 
 @app.route('/posttest-2', methods=['POST', 'GET'])
 def posttest_2():
