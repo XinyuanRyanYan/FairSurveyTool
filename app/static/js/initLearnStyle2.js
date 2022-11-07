@@ -61,22 +61,22 @@ function addQuestion(description, id, name, istitle){
 }
 
 let Questions = [
-  ['…prefer to study alone.'],
-  ['…enjoy competing.'],
-  ['…create a mental picture of what I study.'],
-  ['…prefer to study with other students.'],
-  ['…compete to get the highest grade.'],
-  ['…create a mental picture of what I see.'],
-  ['…learn better when someone represents information in a pictorial (e.g., picture, flowchart) way.'],
-  ['…learn practical tasks better than theoretical ones.'],
-  ['…learn better when I study with other students.'],
-  ['…compete with other students.'],
-  ['…create a mental picture of what I read.']
+  ['…learn better when someone uses visual aids (e.g., whiteboard, power point) to represent a subject.'],
+  ['…learn better when I am involved in a task.'],
+  ['…focus more on the details of a subject.'],
+  ['…consider the details of a subject more than its whole.'],
+  ['…learn better when I watch an educational program.'],
+  ['…learn better when I watch a demonstration.'],
+  ['…create a mental picture of what I hear.'],
+  ['…remember the details of a subject.'],
+  ['…learn better when I study alone.'],
+  ['…remember specific details of subjects.'],
+  ['…learn better when studying practical, job-related, subjects.']
 ]
 addQuestion('', '', '', true);
 for(let i = 0; i < Questions.length; i++){
   let question = Questions[i];
-  let name = `Q${i+1}`;
-  let id = `Q${i+1}Q`;
+  let name = `Q${i+1+11}`;
+  let id = `Q${i+1+11}Q`;
   addQuestion(question, id, name, false);
 }

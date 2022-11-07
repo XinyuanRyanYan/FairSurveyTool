@@ -157,7 +157,12 @@ def engagement():
 @app.route('/learnStyle', methods=['POST', 'GET'])
 def learnStyle():
     saveSession(request.form)   # engagement 
-    return render_template('learnStyle.html')
+    return render_template('learnStyle1.html')
+
+@app.route('/learnStyle2', methods=['POST', 'GET'])
+def learnStyle2():
+    saveSession(request.form)   # engagement 
+    return render_template('learnStyle2.html')
 
 @app.route('/endStudy', methods=['POST', 'GET'])
 def endStudy():
