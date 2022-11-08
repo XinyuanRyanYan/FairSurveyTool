@@ -2,6 +2,7 @@ from app import app
 from flask import Flask, render_template, request, flash, session, jsonify
 from time import gmtime, strftime
 import json
+import random
 
 groupNum = [0, 0, 0]
 id = 0
@@ -14,7 +15,7 @@ def saveResults():
     userData={}
     for key in list(session.keys()):
         userData[key] = session[key]
-    with open("surveyRes/user"+str(id)+".json", "w") as f:
+    with open("surveyRes/user"+str(session['id'])+".json", "w") as f:
         json.dump(userData, f, indent=4)
 
 def getCurTime():
@@ -28,7 +29,9 @@ def IRB():
     for key in list(session.keys()):
         session.pop(key)
     # decide which group
-    session['group'] = groupNum.index(min(groupNum))+1
+    session['group'] = random.randint(1, 3)
+    print('group', session['group'])
+    session['id']=id
     # session['group'] = 2
     session['readingPeriods'] = []  # the reading periods users spend in the 2 parts ['P1', time, numInteraction], ['P2', time], ['End', time, numInteraction]
     session['revisitPeriods'] = []  # the revisiting material periods in second part: ['mtl', time], ['test', time, numInteraction], ['end', time]
@@ -102,8 +105,6 @@ def posttest_1():
 def revisitP1():
     # record revisit time
     session['revisitP1Periods'].append(['mtl', getCurTime()])
-    print('ans collected in the revisit P1')
-    print(request.form)
     saveSession(request.form)   # save post-test1
     return render_template('materialR1_'+str(session['group'])+'.html')
 
@@ -123,6 +124,7 @@ def posttest_2():
         # ['test', time, numInteraction]
         session['revisitPeriods'].append(['test', getCurTime(), request.form['interactNum']])
     else:
+        session['revisitPeriods'].append(['test', getCurTime(), 0]) # the first time visiting the post-2 test
         session['post1ETime'] = getCurTime() # post test 1 end time
         saveSession(request.form)   # post-test1
     return render_template('posttest_2.html')
@@ -131,8 +133,6 @@ def posttest_2():
 def revisit():
     # record revisit time
     session['revisitPeriods'].append(['mtl', getCurTime()])
-    print('ans collected in the revisit')
-    print(request.form)
     saveSession(request.form)   # save post-test2
     return render_template('material'+str(session['group'])+'.html')
 
@@ -149,9 +149,7 @@ def getPost2Ans():
 def engagement():
     # save the finish time of posttest-2  ['end', time]
     session['revisitPeriods'].append(['end', getCurTime()])
-    print('the revisit pattern', session['revisitPeriods'])
     saveSession(request.form)   # post-test2
-    print('the test2 result', request.form)
     return render_template('engage.html')
 
 @app.route('/learnStyle', methods=['POST', 'GET'])

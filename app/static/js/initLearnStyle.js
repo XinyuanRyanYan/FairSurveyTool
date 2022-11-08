@@ -52,7 +52,7 @@ function addQuestion(description, id, name, istitle){
       .classed('form-check-input', true)
       .attr('type', 'radio')
       .attr('name', name)
-      .attr('value', i+1)
+      .attr('value', i)
       .style('margin-right', '6px');
   
     divSelector.append('span')
